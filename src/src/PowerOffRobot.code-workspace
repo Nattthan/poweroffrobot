@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../../../git/PowerOffRobot"
+		},
+		{
+			"name": "PowerOffRobot",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"arduino.h": "c",
+			"io.h": "c"
+		}
+	}
+}
