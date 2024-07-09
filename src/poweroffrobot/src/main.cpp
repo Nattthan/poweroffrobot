@@ -1,72 +1,83 @@
 #include <Arduino.h>
 
 // Pin number for the LED
-const int ledPin = 13;
+const int ledPin = 2;
+// Pin number for the restart button
+const int buttonPin = 3;
 
 // Method to turn the LED on
-void turnLedOn() {
-  Serial.println("POWER ON");
-  digitalWrite(ledPin, HIGH);
-}
-
-// Method to turn the LED off
-void turnLedOff() {
-  Serial.println("POWER OFF");
+void turnLedOn()
+{
   digitalWrite(ledPin, LOW);
 }
 
+// Method to turn the LED off
+void turnLedOff()
+{
+  digitalWrite(ledPin, HIGH);
+}
+
 // Method to restart (power off, wait for 10 seconds, and power on)
-void restart() {
-  Serial.println("HARD REBOOT");
-  // Turn the LED off
+void restart()
+{
   turnLedOff();
-  
-  // Wait for 10 seconds
-  Serial.println("wait 10s");
   delay(10000);
-  
-  // Turn the LED on
   turnLedOn();
 }
 
+void externalRestart()
+{
+  Serial.println("EXTERNAL_HARD_REBOOT \n");
+  delay(5000);
+  restart();
+}
 
-void setup() {
+void setup()
+{
+  // Initialize the digital pin as an input_pullup for the button.
+  pinMode(buttonPin, INPUT_PULLUP);
   // Initialize the digital pin as an output.
   pinMode(ledPin, OUTPUT);
-  
   // Initialize serial communication at 9600 bits per second
   Serial.begin(9600);
 
   // Turn on the LED at the start of the day
   turnLedOn();
-  Serial.println("o will turn on power");
-  Serial.println("f will turn off power");
-  Serial.println("r will restart power with 10s delai");
+  delay(1000);
 }
 
-void loop() {
+void loop()
+{
   // Check if data is available to read
-  if (Serial.available() > 0) {
+  if (Serial.available() > 0)
+  {
     // Read the incoming string
     String command = Serial.readStringUntil('\n');
-
-    // Echo the received command back to the serial monitor
-    Serial.println("Received: " + command);
 
     // Remove any trailing newline characters from the command
     command.trim();
 
     // Execute commands
-    if (command == "o") {
+    if (command == "o")
+    {
       turnLedOn();
-    } else if (command == "f") {
+    }
+    else if (command == "f")
+    {
       turnLedOff();
-    } else if (command == "r") {
+    }
+    else if (command == "r")
+    {
       restart();
-    } else {
+    }
+    else if (command == "RESTART")
+    {
+      externalRestart();
+    }
+    else
+    {
       // If an unknown command is received, notify the user
       Serial.println("Unknown command");
     }
   }
 }
-
