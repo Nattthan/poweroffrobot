@@ -161,7 +161,7 @@ namespace Atmip.Framework.ServicesWorker.Config
     }
 
 
-    private static T ReadWithSHA<T>(string configPath, GlyAppLogger.IAppLogger traceLogger = null)
+    public static T ReadWithSHA<T>(string configPath, GlyAppLogger.IAppLogger traceLogger = null)
     {
       T result = default;
       try
