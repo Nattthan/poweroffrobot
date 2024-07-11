@@ -8,7 +8,7 @@ namespace Atmip.Framework.ServicesWorker.Config
 {
   public static class TransactionalReaderWritter
   {
-    private const byte MAX_TRANSACTIONS = 20;
+    private const byte MAX_TRANSACTIONS = 100;
     private const string TRANSACTION_FORMAT = "yyyy-MM-ddT_HH'h'mm'min'ss.fffffff'sec'z";
 
     private static string RootDataPath { get; set; } = string.Empty;
