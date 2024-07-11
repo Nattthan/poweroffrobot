@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <Reference Include="GlyAppLogger">
-      <HintPath>..\..\atmipv2\src\lib\GlyAppLogger\GlyAppLogger\bin\Release\net7.0\GlyAppLogger.dll</HintPath>
+      <HintPath>..\..\..\atmipv2\src\lib\GlyAppLogger\GlyAppLogger\bin\Release\net7.0\GlyAppLogger.dll</HintPath>
     </Reference>
   </ItemGroup>
 
