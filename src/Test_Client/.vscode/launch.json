@@ -1,96 +1,96 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "writetx_default",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "client.py",
-            "args": ["writetx"],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "analyze_default",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "client.py",
-            "args": ["analyze"],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "write_3.4Mo_None",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "client.py",
-            "args": ["writetx", "--size", "1000", "--method", "None"],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "write_33.4Mo_None",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "client.py",
-            "args": ["writetx", "--size", "10000", "--method", "None"],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "write_66.8Mo_None",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "client.py",
-            "args": ["writetx", "--size", "20000", "--method", "None"],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "write_3.4Mo_WriteThrough",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "client.py",
-            "args": ["writetx", "--size", "1000", "--method", "WriteThrough"],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "write_33.4Mo_WriteThrough",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "client.py",
-            "args": ["writetx", "--size", "10000", "--method", "WriteThrough"],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "write_66.8Mo_WriteTrhough",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "client.py",
-            "args": ["writetx", "--size", "20000", "--method", "WriteThrough"],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "write_3.4Mo_Asynchronous",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "client.py",
-            "args": ["writetx", "--size", "1000", "--method", "Asynchronous"],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "write_33.4Mo_Asynchronous",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "client.py",
-            "args": ["writetx", "--size", "10000", "--method", "Asynchronous"],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "write_66.8Mo_Asynchronous",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "client.py",
-            "args": ["writetx", "--size", "20000", "--method", "Asynchronous"],
-            "console": "integratedTerminal"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": "writetx_default",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "client.py",
+          "args": ["writetx"],
+          "console": "integratedTerminal"
+      },
+      {
+          "name": "analyze_default",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "client.py",
+          "args": ["analyze"],
+          "console": "integratedTerminal"
+      },
+      {
+          "name": "write_1ko_None",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "client.py",
+          "args": ["writetx", "--size", "1000", "--method", "None", "--iteration", "first"],
+          "console": "integratedTerminal"
+      },
+      {
+          "name": "write_10Mo_None",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "client.py",
+          "args": ["writetx", "--size", "10000000", "--method", "None", "--iteration", "first"],
+          "console": "integratedTerminal"
+      },
+      {
+          "name": "write_100Mo_None",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "client.py",
+          "args": ["writetx", "--size", "100000000", "--method", "None", "--iteration", "first"],
+          "console": "integratedTerminal"
+      },
+      {
+          "name": "write_1ko_WriteThrough",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "client.py",
+          "args": ["writetx", "--size", "1000", "--method", "WriteThrough", "--iteration", "first"],
+          "console": "integratedTerminal"
+      },
+      {
+          "name": "write_10Mo_WriteThrough",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "client.py",
+          "args": ["writetx", "--size", "10000000", "--method", "WriteThrough", "--iteration", "first"],
+          "console": "integratedTerminal"
+      },
+      {
+          "name": "write_100Mo_WriteTrhough",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "client.py",
+          "args": ["writetx", "--size", "100000000", "--method", "WriteThrough", "--iteration", "first"],
+          "console": "integratedTerminal"
+      },
+      {
+          "name": "write_1ko_Asynchronous",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "client.py",
+          "args": ["writetx", "--size", "1000", "--method", "Asynchronous", "--iteration", "first"],
+          "console": "integratedTerminal"
+      },
+      {
+          "name": "write_10Mo_Asynchronous",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "client.py",
+          "args": ["writetx", "--size", "10000000", "--method", "Asynchronous", "--iteration", "first"],
+          "console": "integratedTerminal"
+      },
+      {
+          "name": "write_100Mo_Asynchronous",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "client.py",
+          "args": ["writetx", "--size", "100000000", "--method", "Asynchronous", "--iteration", "first"],
+          "console": "integratedTerminal"
+      }
+  ]
 }
