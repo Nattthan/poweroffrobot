@@ -3,12 +3,13 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using TransactionalBankingSimulation;
 
 namespace Atmip.Framework.ServicesWorker.Config
 {
   public static class TransactionalReaderWritter
   {
-    private const byte MAX_TRANSACTIONS = 100;
+    public static int MAX_TRANSACTIONS = ParseParams.maxTx;
     private const string TRANSACTION_FORMAT = "yyyy-MM-ddT_HH'h'mm'min'ss.fffffff'sec'z";
 
     private static string RootDataPath { get; set; } = string.Empty;

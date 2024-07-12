@@ -14,6 +14,7 @@ namespace TransactionalBankingSimulation
     public static string size = "";
     public static string writingMethod = "";
     public static string iteration = "";
+    public static int maxTx = 100;
 
     // Gather the arguments passed to the program
     public static void parse(IEnumerable<string> args)
@@ -34,11 +35,15 @@ namespace TransactionalBankingSimulation
         }
         else if (arg.StartsWith("-method="))
         {
-          writingMethod = arg.Substring(8); ;
+          writingMethod = arg.Substring(8);
         }
         else if (arg.StartsWith("-iteration="))
         {
           iteration = arg.Substring(11);
+        }
+        else if (arg.StartsWith("-maxTx="))
+        {
+          maxTx = int.Parse(arg.Substring(7));
         }
 
       }
