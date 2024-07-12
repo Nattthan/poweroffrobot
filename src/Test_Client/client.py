@@ -10,13 +10,15 @@ def cli():
 @click.option("--size", "-s", help="Entrez la taille des données à écrire", type=int, default=1000)
 @click.option("--method", "-m", help="Entrez la méthode d'écriture à utiliser", default="None")
 @click.option("--iteration", "-i", help="Entrez le numéro de l'itération", default="first")
-def writetx(size, method, iteration):
+@click.option("--maxtx", "-x", help="Entrez le nombre de transaction max", type=int, default=100)
+def writetx(size, method, iteration, maxtx):
     # Construire la commande:
     commandBits = []
     commandBits.append("-writeTx")
     commandBits.append(f"-size={size}")
     commandBits.append(f"-method={method}")
     commandBits.append(f"-iteration={iteration}")
+    commandBits.append(f"-maxTx={maxtx}")
     
     command = " ".join(commandBits)
     send_command(command)
