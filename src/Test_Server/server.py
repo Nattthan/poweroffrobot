@@ -7,19 +7,22 @@ def execute_command(command):
         args = command.split()
         method_write_tx = "-writeTx" in args
         method_analyze = "-analyze" in args
+        param_path = next((arg[6:] for arg in args if arg.startswith("-path=")), None)
         size = next((arg[6:] for arg in args if arg.startswith("-size=")), None)
         method = next((arg[8:] for arg in args if arg.startswith("-method=")), None)
         iteration = next((arg[11:] for arg in args if arg.startswith("-iteration=")), None)
+        maxTx = next((arg[7:] for arg in args if arg.startswith("-maxTx=")), None)
 
         result = subprocess.run([
             "C:\\Users\\guillotn\\_work\\filesForAtmIp\\x86\\Remote\\WriteTransactions.exe",
             "-writeTx" if method_write_tx else "",
             "-analyze" if method_analyze else "",
+            f"-path={param_path}" if param_path else "",
             f"-size={size}" if size else "",
             f"-method={method}" if method else "",
-            f"-iteration={iteration}" if iteration else ""
+            f"-iteration={iteration}" if iteration else "",
+            f"-maxTx={maxTx}" if maxTx else ""
         ], shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
         return result.stdout + result.stderr
 
     except subprocess.CalledProcessError as e:
