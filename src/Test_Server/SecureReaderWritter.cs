@@ -1,20 +1,33 @@
-﻿using System.Security.Cryptography;
+﻿using System.IO;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using Newtonsoft.Json;
 
 namespace Atmip.Framework.ServicesWorker.Config
 {
   public static class SecureReaderWritter
   {
-    public static void WriteSHA(string fileName, byte[] hashValue, GlyAppLogger.IAppLogger traceLogger = null, string option = "WriteThrough")
+
+    static void writeFile(string fileName, byte[] buffer, GlyAppLogger.IAppLogger traceLogger = null)
     {
       try
       {
-        using (FileStream fileStream = new($"{fileName}.sha", FileMode.Create, FileAccess.Write, FileShare.ReadWrite, 0x1000, StringToFileOptions(option)))
+        bool native = true;
+        if (native)
         {
-          fileStream.Write(hashValue, 0, hashValue.Length);
-          fileStream.Flush();
-          fileStream.Close();
+          Kernel32.writeFile(fileName, buffer);
+        }
+        else
+        {
+          string option = "WriteThrough";
+          using (FileStream fileStream = new(fileName, FileMode.Create, FileAccess.Write, FileShare.ReadWrite, 0x1000, StringToFileOptions(option)))
+          {
+            fileStream.Write(buffer, 0, buffer.Length);
+            fileStream.Flush();
+            fileStream.Close();
+          }
+
         }
       }
       catch (IOException e)
@@ -25,6 +38,12 @@ namespace Atmip.Framework.ServicesWorker.Config
       {
         traceLogger?.Trace("SecureReaderWritter.WriteSHA: Access Exception", e);
       }
+
+    }
+
+    public static void WriteSHA(string fileName, byte[] hashValue, GlyAppLogger.IAppLogger traceLogger = null)
+    {
+        writeFile($"{fileName}.sha", hashValue, traceLogger);
     }
 
     public static byte[] Read(string fileName)
@@ -221,23 +240,18 @@ namespace Atmip.Framework.ServicesWorker.Config
 
       try
       {
-        using (FileStream fs = new(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite, 0x1000, StringToFileOptions(option)))
+        var options = new JsonSerializerOptions
         {
-            // using (StreamWriter file = File.CreateText(Path))
-            using (StreamWriter streamWriter = new(fs))
-            {
-                JsonSerializer serializer = new()
-                {
-                    Formatting = Formatting.Indented
-                };
-                serializer.Serialize(streamWriter, actorConfig, typeof(T));
-                streamWriter.Flush();
-                fs.Flush();
-                streamWriter.Close();
-                streamWriter.Dispose();
-                WriteSHA(path, ComputeSHA(path));
-            }
-        }
+          WriteIndented = true
+        };
+
+        string jsonString=System.Text.Json.JsonSerializer.Serialize(actorConfig, options);
+
+        byte[] byteBuffer = Encoding.UTF8.GetBytes(jsonString);
+
+        writeFile(path, byteBuffer,traceLogger);
+
+        WriteSHA(path, ComputeSHA(path));
       }
       catch (Exception ex)
       {
