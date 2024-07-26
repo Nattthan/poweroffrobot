@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WriteTransactions", "WriteTransactions.csproj", "{B14D3FFD-080D-470F-AFF1-04EB9E7CD302}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+		Remote|x86 = Remote|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B14D3FFD-080D-470F-AFF1-04EB9E7CD302}.Debug|x86.ActiveCfg = Debug|x86
+		{B14D3FFD-080D-470F-AFF1-04EB9E7CD302}.Debug|x86.Build.0 = Debug|x86
+		{B14D3FFD-080D-470F-AFF1-04EB9E7CD302}.Release|x86.ActiveCfg = Release|x86
+		{B14D3FFD-080D-470F-AFF1-04EB9E7CD302}.Release|x86.Build.0 = Release|x86
+		{B14D3FFD-080D-470F-AFF1-04EB9E7CD302}.Remote|x86.ActiveCfg = Remote|x86
+		{B14D3FFD-080D-470F-AFF1-04EB9E7CD302}.Remote|x86.Build.0 = Remote|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB40DE75-70A8-4FB0-B8B0-6FC86D40BF5E}
+	EndGlobalSection
+EndGlobal
