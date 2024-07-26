@@ -1,17 +1,15 @@
 #include <Arduino.h>
 
-// Pin number for the LED
+// Pin number for the SSR
 const int ledPin = 2;
-// Pin number for the restart button
-const int buttonPin = 3;
 
-// Method to turn the LED on
+// Method to turn the LED on (enabling the SSR)
 void turnLedOn()
 {
   digitalWrite(ledPin, LOW);
 }
 
-// Method to turn the LED off
+// Method to turn the LED off (disabling the SSR)
 void turnLedOff()
 {
   digitalWrite(ledPin, HIGH);
@@ -20,22 +18,15 @@ void turnLedOff()
 // Method to restart (power off, wait for 10 seconds, and power on)
 void restart()
 {
+  Serial.println("Restarting...");
+  delay(1000);
   turnLedOff();
   delay(10000);
   turnLedOn();
 }
 
-void externalRestart()
-{
-  Serial.println("EXTERNAL_HARD_REBOOT \n");
-  delay(5000);
-  restart();
-}
-
 void setup()
 {
-  // Initialize the digital pin as an input_pullup for the button.
-  pinMode(buttonPin, INPUT_PULLUP);
   // Initialize the digital pin as an output.
   pinMode(ledPin, OUTPUT);
   // Initialize serial communication at 9600 bits per second
@@ -66,13 +57,9 @@ void loop()
     {
       turnLedOff();
     }
-    else if (command == "r")
-    {
-      restart();
-    }
     else if (command == "RESTART")
     {
-      externalRestart();
+      restart();
     }
     else
     {
